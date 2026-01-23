@@ -11,19 +11,21 @@ html, body {
 }
 
 #ff-landing{
-  --bg:#06120D;
-  --bg2:#0B1E16;
-  --text:rgba(255,255,255,0.92);
-  --muted:rgba(255,255,255,0.72);
-  --gold:#C9A24D;
-  --gold2:#E7C76E;
-  --shadow:0 18px 60px rgba(0,0,0,0.35);
-  --radius:18px;
-  --radius2:26px;
-  --max:1080px;
+   --serif: "Cormorant Garamond", Garamond, Georgia, serif;
+   --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+   --bg:#06120D;
+   --bg2:#0B1E16;
+   --text:rgba(255,255,255,0.92);
+   --muted:rgba(255,255,255,0.72);
+   --gold:#C9A24D;
+   --gold2:#E7C76E;
+   --shadow:0 18px 60px rgba(0,0,0,0.35);
+   --radius:18px;
+   --radius2:26px;
+   --max:1080px;
 
   color:var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial;
+  font-family: var(--sans);
   background:
     radial-gradient(1200px 700px at 20% 0%, rgba(201,162,77,0.12), transparent 55%),
     radial-gradient(1000px 600px at 80% 10%, rgba(231,199,110,0.08), transparent 60%),
@@ -77,6 +79,20 @@ html, body {
   padding:10px 14px;
   border-radius:999px;
   color:var(--gold);
+}
+
+/* Typography */
+.brand h1,
+.headline,
+.section-title,
+.side h3{
+  font-family: var(--serif);
+  letter-spacing: 0.2px;
+}
+
+.kicker{
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
 }
 
 /* Hero (fixed overlay containment) */
