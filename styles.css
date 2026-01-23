@@ -2,6 +2,14 @@
    FEAST & FOREVER — STYLES
 ================================ */
 
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  overflow-x: hidden;
+  background: #06120D;
+}
+
 #ff-landing{
   --bg:#06120D;
   --bg2:#0B1E16;
