@@ -71,12 +71,25 @@
   color:var(--gold);
 }
 
-/* Hero */
-.hero{ padding:70px 0; }
+/* Hero (fixed overlay containment) */
+.hero{
+  position: relative;   /* IMPORTANT: contains the absolute bg */
+  overflow: hidden;
+  padding: 70px 0;
+}
+
 .hero-bg{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(6,18,13,0.85), rgba(6,18,13,0.95));
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background: linear-gradient(180deg, rgba(6,18,13,0.85), rgba(6,18,13,0.95));
+  pointer-events: none; /* IMPORTANT: overlay never blocks clicks */
+  z-index: 0;           /* sits behind content */
+}
+
+/* Ensure hero content sits above the background */
+.hero .wrap{
+  position: relative;
+  z-index: 1;
 }
 
 .grid{
