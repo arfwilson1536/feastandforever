@@ -84,14 +84,10 @@ html, body {
 .brand h1,
 .headline,
 .section-title,
-.side h3{
+.side h3,
+.note h4{
   font-family: var(--serif);
   letter-spacing: 0.2px;
-}
-
-.kicker{
-  letter-spacing: 1.6px;
-  text-transform: uppercase;
 }
 
 /* Hero (fixed overlay containment) */
