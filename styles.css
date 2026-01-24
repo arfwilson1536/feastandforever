@@ -592,12 +592,49 @@
       outline: none;
       transition: border-color .15s ease, background .15s ease;
     }
-    input::placeholder, textarea::placeholder{ color: rgba(184,199,193,.70); }
-    input:focus, textarea:focus, select:focus{
-      border-color: rgba(214,181,109,.65);
-      background: rgba(6,27,22,.40);
+
+    input,
+    textarea,
+    select{
+      width: 100%;
+      padding: 12px 44px 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background-color: rgba(6,27,22,.32);
+      color: var(--text);
+      font: inherit;
+      line-height: 1.2;
+      outline: none;
+      transition: border-color .15s ease, background-color .15s ease;
     }
-    textarea{ min-height: 120px; resize: vertical; }
+    
+    /* Remove native select styling */
+    select{
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+    }
+    
+    /* Placeholder text */
+    input::placeholder,
+    textarea::placeholder{
+      color: rgba(184,199,193,.70);
+    }
+    
+    /* Focus states */
+    input:focus,
+    textarea:focus,
+    select:focus{
+      border-color: rgba(214,181,109,.65);
+      background-color: rgba(6,27,22,.40);
+    }
+    
+    /* Textarea specifics */
+    textarea{
+      min-height: 120px;
+      resize: vertical;
+    }
 
     .form-row{
       display:grid;
