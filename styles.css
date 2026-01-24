@@ -11,7 +11,7 @@ html, body {
 }
 
 #ff-landing{
-   --serif: "Cormorant Garamond", Garamond, Georgia, serif;
+   --serif: "DM Serif Display", Georgia, serif;
    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
    --bg:#06120D;
    --bg2:#0B1E16;
