@@ -1,242 +1,1223 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Feast & Forever — Where Memories Become Menus</title>
+  <meta name="theme-color" content="#0B2A22" />
+  <title>Feast &amp; Forever — Where Memories Become Menus</title>
+  <meta name="description" content="Feast & Forever creates bespoke, story-driven wedding and event dining experiences. Where Memories Become Menus." />
 
-  <meta name="description" content="Bespoke weddings and private events in Scotland. Story-led dining experiences inspired by your love story." />
+  <!-- Minimal, privacy-friendly font stack (no external requests). Swap to a brand font later if you want. -->
+  <style>
+    /* -----------------------------
+       Feast & Forever Landing Page
+       Elegant • Modern • Functional
+       ----------------------------- */
 
-  <link rel="stylesheet" href="styles.css" /> 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    :root{
+      --bg: #061B16;          /* deep forest */
+      --bg-2:#081F19;
+      --surface:#0B2A22;
+      --surface-2:#0E342B;
+      --text:#F2F5F3;
+      --muted:#B8C7C1;
+      --line: rgba(255,255,255,.12);
 
+      --gold:#D6B56D;
+      --gold-2:#B9903D;
+
+      --success:#7CE0B1;
+
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,.22);
+
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+
+      --max: 1120px;
+      --pad: clamp(18px, 3.2vw, 34px);
+    }
+
+    /* Reset-ish */
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 420px at 16% -10%, rgba(214,181,109,.18), transparent 55%),
+        radial-gradient(800px 460px at 90% 10%, rgba(124,224,177,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, #041411 60%, #03110E 100%);
+      line-height:1.45;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    button, input, textarea{ font: inherit; }
+
+    /* Utilities */
+    .container{
+      width: min(var(--max), 100% - (var(--pad) * 2));
+      margin-inline:auto;
+    }
+    .grid{
+      display:grid;
+      gap: 18px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      cursor:pointer;
+      white-space: nowrap;
+    }
+    .btn:hover{ transform: translateY(-1px); background: rgba(255,255,255,.09); border-color: rgba(214,181,109,.45); }
+    .btn:active{ transform: translateY(0px); }
+
+    .btn--primary{
+      border-color: rgba(214,181,109,.55);
+      background: linear-gradient(180deg, rgba(214,181,109,.25), rgba(214,181,109,.14));
+    }
+    .btn--primary:hover{
+      border-color: rgba(214,181,109,.85);
+      background: linear-gradient(180deg, rgba(214,181,109,.32), rgba(214,181,109,.18));
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(214,181,109,.35);
+      background: rgba(214,181,109,.10);
+      color: var(--text);
+      font-size: 13px;
+      letter-spacing: .2px;
+    }
+    .muted{ color: var(--muted); }
+    .section{
+      padding: clamp(56px, 7vw, 92px) 0;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    .card__inner{ padding: 22px; }
+    .divider{
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.18), transparent);
+      margin: 18px 0;
+    }
+
+    /* Top Nav */
+    .nav{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(5,18,14,.72);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav__row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 14px 0;
+      gap: 14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .mark{
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      border: 1px solid rgba(214,181,109,.35);
+      background:
+        radial-gradient(14px 14px at 28% 32%, rgba(214,181,109,.65), transparent 60%),
+        radial-gradient(18px 18px at 70% 70%, rgba(124,224,177,.35), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      display:grid;
+      place-items:center;
+    }
+    .mark svg{ opacity:.95; }
+    .brand__name{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
+    }
+    .brand__name strong{
+      font-weight: 650;
+      letter-spacing: .2px;
+    }
+    .brand__name span{
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+    .nav__links{
+      display:flex;
+      gap: 16px;
+      align-items:center;
+      justify-content:center;
+      flex-wrap: wrap;
+    }
+    .nav__links a{
+      font-size: 14px;
+      color: rgba(242,245,243,.88);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .nav__links a:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(214,181,109,.25);
+      color: var(--text);
+    }
+    .nav__cta{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+
+    /* Hero */
+    .hero{
+      padding: clamp(44px, 6vw, 74px) 0 0;
+    }
+    .hero__wrap{
+      display:grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: clamp(18px, 3.5vw, 34px);
+      align-items: stretch;
+    }
+    .hero h1{
+      font-size: clamp(36px, 4.8vw, 58px);
+      line-height: 1.02;
+      letter-spacing: -0.8px;
+      margin: 14px 0 14px;
+    }
+    .hero p{
+      font-size: clamp(16px, 1.4vw, 18px);
+      color: rgba(242,245,243,.86);
+      margin: 0 0 18px;
+      max-width: 60ch;
+    }
+    .hero__actions{
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .hero__meta{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .hero__meta .dot{
+      width: 6px; height: 6px; border-radius: 99px;
+      background: rgba(214,181,109,.85);
+      display:inline-block;
+      margin-right: 8px;
+    }
+
+    .hero__panel{
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(420px 240px at 24% 22%, rgba(214,181,109,.18), transparent 65%),
+        radial-gradient(520px 280px at 86% 30%, rgba(124,224,177,.12), transparent 68%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      min-height: 420px;
+    }
+    .hero__panel:before{
+      content:"";
+      position:absolute;
+      inset: -2px;
+      background: radial-gradient(420px 260px at 10% 20%, rgba(214,181,109,.22), transparent 60%);
+      opacity: .55;
+      pointer-events:none;
+    }
+    .hero__panel-inner{
+      position: relative;
+      padding: 22px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+    .kpi{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .kpi .box{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(6,27,22,.35);
+      padding: 14px;
+    }
+    .kpi .box strong{
+      display:block;
+      font-size: 20px;
+      letter-spacing: -.2px;
+    }
+    .kpi .box span{
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    .panel-card{
+      border-radius: 18px;
+      border: 1px solid rgba(214,181,109,.22);
+      background: rgba(6,27,22,.40);
+      padding: 16px;
+    }
+    .panel-card h3{
+      margin: 0 0 8px;
+      font-size: 14px;
+      letter-spacing: .2px;
+      color: rgba(242,245,243,.92);
+      font-weight: 650;
+    }
+    .panel-card ul{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(242,245,243,.82);
+      font-size: 13.5px;
+    }
+    .panel-card li{ margin: 6px 0; }
+    .tagline{
+      margin-top:auto;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: rgba(242,245,243,.80);
+      font-size: 13px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Trust strip */
+    .trust{
+      padding: 22px 0 0;
+    }
+    .trust__row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+    }
+    .trust__row span{
+      color: rgba(242,245,243,.78);
+      font-size: 13px;
+    }
+    .trust__logos{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content:flex-end;
+      opacity: .9;
+    }
+    .logo-chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(6,27,22,.30);
+      color: rgba(242,245,243,.72);
+      font-size: 12.5px;
+      letter-spacing: .2px;
+    }
+
+    /* Section headings */
+    .section__head{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .section__head h2{
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -0.3px;
+      line-height: 1.1;
+    }
+    .section__head p{
+      margin: 0;
+      color: rgba(242,245,243,.82);
+      max-width: 70ch;
+    }
+
+    /* Feature cards */
+    .features{
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .feature{
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow-soft);
+    }
+    .feature .icon{
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(214,181,109,.30);
+      background: rgba(214,181,109,.10);
+      margin-bottom: 12px;
+    }
+    .feature h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      letter-spacing: .1px;
+    }
+    .feature p{
+      margin: 0;
+      color: rgba(242,245,243,.78);
+      font-size: 14px;
+    }
+
+    /* Steps */
+    .steps{
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .steps .card__inner{ padding: 26px; }
+    .step{
+      display:flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-top: 1px dashed rgba(255,255,255,.14);
+    }
+    .step:first-child{ border-top:none; padding-top: 0; }
+    .num{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(214,181,109,.40);
+      background: rgba(214,181,109,.10);
+      display:grid;
+      place-items:center;
+      color: rgba(242,245,243,.92);
+      font-weight: 700;
+      font-size: 13px;
+      flex: 0 0 auto;
+    }
+    .step h4{ margin: 0 0 4px; font-size: 15px; }
+    .step p{ margin: 0; color: rgba(242,245,243,.78); font-size: 14px; }
+
+    /* Services */
+    .services{
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .service{
+      padding: 22px;
+    }
+    .service .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .service h3{ margin:0; font-size: 16px; }
+    .service ul{ margin: 0; padding-left: 18px; color: rgba(242,245,243,.82); }
+    .service li{ margin: 8px 0; font-size: 14px; }
+
+    /* Story / Menu cards */
+    .stories{
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .story{
+      position: relative;
+      overflow:hidden;
+    }
+    .story .band{
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(214,181,109,.14), rgba(255,255,255,.03));
+    }
+    .story .band strong{
+      display:block;
+      font-size: 14px;
+      letter-spacing: .2px;
+    }
+    .story .band span{
+      color: rgba(242,245,243,.72);
+      font-size: 12.5px;
+    }
+    .story .card__inner{ padding: 18px 22px 22px; }
+    .story p{ margin: 0 0 12px; color: rgba(242,245,243,.80); font-size: 14px; }
+    .chips{
+      display:flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .chip{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(6,27,22,.28);
+      color: rgba(242,245,243,.75);
+      font-size: 12.5px;
+    }
+
+    /* Testimonials */
+    .testimonials{
+      grid-template-columns: 1.2fr .8fr;
+      align-items: stretch;
+    }
+    .quote{
+      padding: 26px;
+    }
+    .quote p{
+      font-size: 16px;
+      margin: 0 0 16px;
+      color: rgba(242,245,243,.88);
+    }
+    .quote .who{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      color: rgba(242,245,243,.80);
+      font-size: 13.5px;
+    }
+    .avatar{
+      width: 38px; height: 38px;
+      border-radius: 14px;
+      border: 1px solid rgba(214,181,109,.28);
+      background:
+        radial-gradient(16px 16px at 30% 30%, rgba(214,181,109,.55), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    }
+    .stats{
+      padding: 22px;
+    }
+    .stat{
+      padding: 14px 0;
+      border-top: 1px dashed rgba(255,255,255,.14);
+    }
+    .stat:first-child{ border-top:none; padding-top:0; }
+    .stat strong{ display:block; font-size: 18px; }
+    .stat span{ color: rgba(242,245,243,.72); font-size: 13px; }
+
+    /* FAQ */
+    details{
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      padding: 14px 16px;
+    }
+    details + details{ margin-top: 10px; }
+    summary{
+      cursor:pointer;
+      list-style:none;
+      font-weight: 650;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    summary:after{
+      content:"+";
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      border: 1px solid rgba(214,181,109,.30);
+      background: rgba(214,181,109,.10);
+      color: rgba(242,245,243,.92);
+      flex: 0 0 auto;
+      transition: transform .15s ease;
+    }
+    details[open] summary:after{ content:"–"; }
+    details p{
+      margin: 10px 0 0;
+      color: rgba(242,245,243,.78);
+      font-size: 14px;
+    }
+
+    /* Contact */
+    .contact{
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    form{
+      display:grid;
+      gap: 12px;
+    }
+    label{
+      font-size: 13px;
+      color: rgba(242,245,243,.86);
+    }
+    input, textarea, select{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(6,27,22,.32);
+      color: var(--text);
+      outline: none;
+      transition: border-color .15s ease, background .15s ease;
+    }
+    input::placeholder, textarea::placeholder{ color: rgba(184,199,193,.70); }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(214,181,109,.65);
+      background: rgba(6,27,22,.40);
+    }
+    textarea{ min-height: 120px; resize: vertical; }
+
+    .form-row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .note{
+      font-size: 12.5px;
+      color: rgba(242,245,243,.68);
+    }
+
+    /* Footer */
+    footer{
+      padding: 26px 0 36px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      background: rgba(5,18,14,.55);
+    }
+    .footer__row{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .small-links{
+      display:flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      color: rgba(242,245,243,.72);
+      font-size: 13px;
+    }
+    .small-links a:hover{ color: var(--text); }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero__wrap{ grid-template-columns: 1fr; }
+      .kpi{ grid-template-columns: repeat(3, 1fr); }
+      .features{ grid-template-columns: 1fr; }
+      .steps{ grid-template-columns: 1fr; }
+      .services{ grid-template-columns: 1fr; }
+      .stories{ grid-template-columns: 1fr; }
+      .testimonials{ grid-template-columns: 1fr; }
+      .contact{ grid-template-columns: 1fr; }
+      .nav__links{ display:none; } /* keep it clean on mobile; you can add a burger later */
+    }
+    @media (max-width: 520px){
+      .kpi{ grid-template-columns: 1fr; }
+      .form-row{ grid-template-columns: 1fr; }
+      .brand{ min-width: 0; }
+    }
+
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior:auto !important; transition:none !important; }
+    }
+  </style>
 </head>
 
 <body>
-
-<div id="ff-landing">
-
-  <!-- Header -->
-  <header class="ff-header">
-    <div class="wrap">
-      <div class="nav">
-
-        <div class="brand">
-          <div class="mark" aria-hidden="true"></div>
-          <div>
-            <h1>Feast &amp; Forever</h1>
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__row">
+        <a class="brand" href="#top" aria-label="Feast & Forever home">
+          <div class="mark" aria-hidden="true">
+            <!-- Simple infinity mark placeholder (swap with your real SVG logo later) -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M9.2 16.6c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5 4-1.5 5.5 0l6.1 6.1c1.5 1.5 4 1.5 5.5 0s1.5-4 0-5.5-4-1.5-5.5 0L8.2 17.8"
+                    stroke="rgba(214,181,109,.95)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="brand__name">
+            <strong>Feast &amp; Forever</strong>
             <span>Where Memories Become Menus</span>
           </div>
-        </div>
+        </a>
 
-        <nav class="navlinks">
-          <a href="#why">Why</a>
-          <a href="#difference">What’s different</a>
+        <nav class="nav__links" aria-label="Primary">
           <a href="#how">How it works</a>
-          <a href="#enquire">Enquire</a>
+          <a href="#services">Services</a>
+          <a href="#stories">Sample stories</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Enquire</a>
         </nav>
 
-        <a class="cta" href="#enquire">Check your date →</a>
-
+        <div class="nav__cta">
+          <a class="btn" href="#contact">Get pricing</a>
+          <a class="btn btn--primary" href="#contact">Check availability</a>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" id="top">
-    <div class="hero-bg"></div>
-
-    <div class="wrap">
-      <div class="grid">
-
-        <div class="hero-card">
-          <p class="kicker">Bespoke weddings &amp; private events • Scotland</p>
-          <h2 class="headline">Weddings and Events that tell your story.</h2>
-
-          <p class="subhead">
-            Feast &amp; Forever creates story-led dining experiences inspired by your love story — first dates,
-            shared travels, traditions you’ve created together, and the moments that matter.
-            Calm, considered hospitality. Food with meaning.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#enquire">Enquire for 2026</a>
-            <a class="btn" href="#why">Read the story</a>
-          </div>
-
-          <p class="micro">
-            <strong>Small diary, intentional work.</strong>
-            We take a limited number of events so every menu can be truly personal.
-          </p>
-        </div>
-
-        <aside class="side">
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__wrap">
           <div>
-            <h3>What you’re booking</h3>
+            <span class="pill">
+              <span class="dot" aria-hidden="true" style="width:8px;height:8px;border-radius:999px;background:rgba(124,224,177,.9)"></span>
+              Bespoke wedding &amp; event dining • Scotland
+            </span>
+
+            <h1>Turn your story into an unforgettable menu.</h1>
             <p>
-              A collaborative process that turns your story into a menu —
-              with thoughtful service designed to feel effortless on the day.
+              Feast &amp; Forever creates elegant, story-driven dining experiences for weddings and milestone events.
+              We translate your favourite memories—places, people, inside jokes, late-night snacks—into a beautifully paced
+              menu your guests will talk about for years.
             </p>
 
-            <div class="pillrow">
-              <span class="pill">Story-led menus</span>
-              <span class="pill">Seasonal ingredients</span>
-              <span class="pill">Bespoke to you</span>
-              <span class="pill">Calm delivery</span>
+            <div class="hero__actions">
+              <a class="btn btn--primary" href="#contact">Enquire now</a>
+              <a class="btn" href="#how">See how it works</a>
+            </div>
+
+            <div class="hero__meta" aria-label="Highlights">
+              <span><span class="dot" aria-hidden="true"></span>Fully bespoke menus</span>
+              <span><span class="dot" aria-hidden="true"></span>Elegant service &amp; pacing</span>
+              <span><span class="dot" aria-hidden="true"></span>Edinburgh &amp; beyond</span>
             </div>
           </div>
 
-          <div>
-            <h3>Best for</h3>
-            <p>
-              Foodie couples who want their wedding meal to feel as special as the rest of their day —
-              and want guests to feel something, not just eat something.
-            </p>
+          <aside class="hero__panel" aria-label="At-a-glance">
+            <div class="hero__panel-inner">
+              <div class="panel-card">
+                <h3>Your experience includes</h3>
+                <ul>
+                  <li>Story consultation &amp; flavour mapping</li>
+                  <li>Menu design (print + digital), course scripts</li>
+                  <li>On-the-day execution: kitchen, FOH, timeline</li>
+                  <li>Optional cocktail pairing &amp; bar service</li>
+                </ul>
+              </div>
+
+              <div class="kpi" aria-label="Key stats">
+                <div class="box">
+                  <strong>100%</strong>
+                  <span>bespoke</span>
+                </div>
+                <div class="box">
+                  <strong>15%</strong>
+                  <span>target food cost</span>
+                </div>
+                <div class="box">
+                  <strong>Edinburgh+</strong>
+                  <span>service area</span>
+                </div>
+              </div>
+
+              <div class="tagline">
+                <span class="muted">Elegant, quirky, unforgettable.</span>
+                <span class="pill" style="border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                  Limited dates • 2026
+                </span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="trust">
+          <div class="trust__row">
+            <span class="muted">Perfect for weddings, private dining, and corporate storytelling.</span>
+            <div class="trust__logos" aria-label="Trust markers">
+              <span class="logo-chip">Bespoke Menu Design</span>
+              <span class="logo-chip">Event Execution</span>
+              <span class="logo-chip">Pairings (Optional)</span>
+              <span class="logo-chip">Dietary-led Planning</span>
+            </div>
           </div>
-        </aside>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Why -->
-  <section id="why">
-    <div class="wrap">
-      <h3 class="section-title">Why Feast &amp; Forever exists</h3>
-
-      <p class="section-lead">
-        The most meaningful meals are never just about the food.
-        They’re about who you were with, where you were, and how it made you feel.
-        Feast &amp; Forever exists to create wedding and event dining that feels personal,
-        intentional, and deeply connected to the people it’s made for.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <h4>Not a template</h4>
-          <p>We don’t start with packages. We start with your story — and build from there.</p>
-        </div>
-        <div class="card">
-          <h4>Not performative</h4>
-          <p>Elegant food with purpose. Every dish belongs, every choice has a reason.</p>
-        </div>
-        <div class="card">
-          <h4>Not rushed</h4>
-          <p>Calm, considered service rooted in real hospitality experience.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Difference -->
-  <section id="difference">
-    <div class="wrap">
-      <h3 class="section-title">What’s different</h3>
-
-      <p class="section-lead">
-        Most wedding catering is designed to be safe and scalable.
-        Feast &amp; Forever is designed to be <em>yours</em>.
-      </p>
-
-      <div class="cards">
-        <div class="card">
-          <h4>Story → flavour</h4>
-          <p>Memories become ingredients, textures, and moments across the menu.</p>
-        </div>
-        <div class="card">
-          <h4>Designed, then delivered</h4>
-          <p>A clear process, followed by calm execution on the day.</p>
-        </div>
-        <div class="card">
-          <h4>A small diary by design</h4>
-          <p>Limited bookings mean focus, care, and a genuinely bespoke result.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- How -->
-  <section id="how">
-    <div class="wrap">
-      <h3 class="section-title">How it works</h3>
-
-      <div class="steps">
-        <div class="step">
-          <p class="stepnum">Step 1</p>
-          <h4>Discovery</h4>
-          <p>A relaxed conversation about your day, your people, and what matters.</p>
-        </div>
-        <div class="step">
-          <p class="stepnum">Step 2</p>
-          <h4>Story mapping</h4>
-          <p>We extract themes and moments that guide the menu design.</p>
-        </div>
-        <div class="step">
-          <p class="stepnum">Step 3</p>
-          <h4>Menu build</h4>
-          <p>A tailored proposal covering food, service style, and flow.</p>
-        </div>
-        <div class="step">
-          <p class="stepnum">Step 4</p>
-          <h4>Calm delivery</h4>
-          <p>Thoughtful execution so the meal feels effortless and memorable.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Enquire -->
-  <section id="enquire">
-    <div class="wrap">
-      <h3 class="section-title">Enquire</h3>
-
-      <p class="section-lead">
-        Tell us the basics and we’ll suggest a next step.
-      </p>
-
-      <div class="formwrap">
-        <form>
-          <label>Your name</label>
-          <input type="text" required>
-
-          <label>Email</label>
-          <input type="email" required>
-
-          <label>Event date</label>
-          <input type="date">
-
-          <label>Tell us a little about your story</label>
-          <textarea></textarea>
-
-          <button class="btn btn-primary" type="submit">Send enquiry</button>
-        </form>
-
-        <div class="note">
-          <h4>Quietly opening our diary</h4>
-          <p>
-            Feast &amp; Forever takes a limited number of events each year.
-            If we’re the right fit, we’ll guide you gently through the next step.
+    <!-- FEATURES -->
+    <section class="section" aria-label="Why Feast & Forever">
+      <div class="container">
+        <div class="section__head">
+          <h2>Not just catering — a curated experience.</h2>
+          <p class="muted">
+            We’re obsessive about pacing, flavour arcs, and the feeling in the room. The goal is simple:
+            guests leave saying, “That was so *them*.”
           </p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="ff-footer">
-    <div class="wrap footergrid">
-      <div>© <span id="year"></span> Feast &amp; Forever</div>
-      <a href="#top" class="pill">Back to top ↑</a>
+        <div class="grid features">
+          <div class="feature">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 21s7-4.35 7-11a4 4 0 0 0-7-2.5A4 4 0 0 0 5 10c0 6.65 7 11 7 11Z" stroke="rgba(214,181,109,.95)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Memory-led menus</h3>
+            <p>We map your story to flavours: first date, favourite city, comfort food, family traditions — all transformed into courses.</p>
+          </div>
+
+          <div class="feature">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12h16M7 12l-3 3m3-3-3-3" stroke="rgba(214,181,109,.95)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Flow &amp; pacing</h3>
+            <p>Every moment has a purpose. We plan service timing so guests feel cared for — never rushed, never waiting.</p>
+          </div>
+
+          <div class="feature">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M20 7 10 17l-5-5" stroke="rgba(124,224,177,.95)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Confidence on the day</h3>
+            <p>Clear run-sheets, calm leadership, tight execution. You enjoy your day; we handle the moving parts.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="section" aria-label="How it works">
+      <div class="container">
+        <div class="section__head">
+          <h2>How it works</h2>
+          <p class="muted">A simple process that leads to a deeply personal outcome.</p>
+        </div>
+
+        <div class="grid steps">
+          <div class="card">
+            <div class="card__inner">
+              <div class="step">
+                <div class="num">1</div>
+                <div>
+                  <h4>Story consultation</h4>
+                  <p>We capture the moments that define you — places, dishes, people, music, and the vibe you want on the day.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="num">2</div>
+                <div>
+                  <h4>Flavour mapping</h4>
+                  <p>We translate your memories into a menu arc: nostalgic openers, wow moments, comforting mains, and a final flourish.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="num">3</div>
+                <div>
+                  <h4>Design &amp; planning</h4>
+                  <p>Menu wording, dietary planning, timeline, staffing, equipment — all confirmed in a clear and calm plan.</p>
+                </div>
+              </div>
+              <div class="step">
+                <div class="num">4</div>
+                <div>
+                  <h4>Execution</h4>
+                  <p>We deliver the experience with polished service and pacing, so every course lands exactly as intended.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__inner">
+              <span class="pill">What you’ll receive</span>
+              <div class="divider"></div>
+              <div class="grid" style="gap:12px">
+                <div class="panel-card">
+                  <h3>Menu storybook</h3>
+                  <ul>
+                    <li>Course titles tied to your narrative</li>
+                    <li>Short scripts for hosts / speeches</li>
+                    <li>Pairing notes (optional)</li>
+                  </ul>
+                </div>
+                <div class="panel-card">
+                  <h3>On-the-day clarity</h3>
+                  <ul>
+                    <li>Run sheet &amp; service timings</li>
+                    <li>Supplier &amp; venue coordination</li>
+                    <li>Dietary-led guest care</li>
+                  </ul>
+                </div>
+                <div class="panel-card">
+                  <h3>A team you trust</h3>
+                  <ul>
+                    <li>Professional kitchen &amp; FOH</li>
+                    <li>Calm leadership under pressure</li>
+                    <li>Polished, warm hospitality</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+              <a class="btn btn--primary" href="#contact">Start your enquiry</a>
+              <p class="note" style="margin:10px 0 0;">No obligation — we’ll reply with next steps and a rough guide price.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section" aria-label="Services">
+      <div class="container">
+        <div class="section__head">
+          <h2>Services</h2>
+          <p class="muted">Choose the level of support you need — from full production to elevated drop-off.</p>
+        </div>
+
+        <div class="grid services">
+          <div class="card service">
+            <div class="top">
+              <h3>Weddings</h3>
+              <span class="pill">Signature</span>
+            </div>
+            <ul>
+              <li>Bespoke multi-course menu &amp; story scripts</li>
+              <li>Full kitchen + FOH service team</li>
+              <li>Timeline design &amp; venue coordination</li>
+              <li>Dietary planning &amp; guest care</li>
+            </ul>
+          </div>
+
+          <div class="card service">
+            <div class="top">
+              <h3>Private Dining</h3>
+              <span class="pill">At home / venue</span>
+            </div>
+            <ul>
+              <li>Intimate tasting menus &amp; tablescapes</li>
+              <li>Host-led “story course” moments</li>
+              <li>Optional pairings / bar moments</li>
+              <li>Perfect for milestone birthdays</li>
+            </ul>
+          </div>
+
+          <div class="card service">
+            <div class="top">
+              <h3>Corporate</h3>
+              <span class="pill">Premium</span>
+            </div>
+            <ul>
+              <li>Brand-to-flavour mapping (taste the story)</li>
+              <li>Run-of-show planning &amp; logistics</li>
+              <li>Dietary-led, high-polish service</li>
+              <li>Great for launches &amp; client hosting</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SAMPLE STORIES -->
+    <section id="stories" class="section" aria-label="Sample story menus">
+      <div class="container">
+        <div class="section__head">
+          <h2>Sample story moments</h2>
+          <p class="muted">Examples of how memories translate into courses — your final menu will be uniquely yours.</p>
+        </div>
+
+        <div class="grid stories">
+          <article class="card story">
+            <div class="band">
+              <strong>“First Date”</strong>
+              <span>Warm, playful, nostalgic</span>
+            </div>
+            <div class="card__inner">
+              <p>A modern take on the dish you both ordered — elevated, lighter, and built for conversation.</p>
+              <div class="chips">
+                <span class="chip">Comfort</span>
+                <span class="chip">Seasonal</span>
+                <span class="chip">Bright acidity</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card story">
+            <div class="band">
+              <strong>“The Trip”</strong>
+              <span>Travel, texture, surprise</span>
+            </div>
+            <div class="card__inner">
+              <p>A flavour postcard: one bite that instantly transports guests to your favourite city or coastline.</p>
+              <div class="chips">
+                <span class="chip">Aromatic</span>
+                <span class="chip">Citrus</span>
+                <span class="chip">Crunch</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card story">
+            <div class="band">
+              <strong>“Home”</strong>
+              <span>Deep, rich, celebratory</span>
+            </div>
+            <div class="card__inner">
+              <p>A centrepiece course inspired by family tradition — with a refined finish and a clean, elegant plate.</p>
+              <div class="chips">
+                <span class="chip">Umami</span>
+                <span class="chip">Slow-cooked</span>
+                <span class="chip">Gold accent</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section" aria-label="Testimonials">
+      <div class="container">
+        <div class="section__head">
+          <h2>Designed to feel effortless.</h2>
+          <p class="muted">High polish, warm hospitality, and a plan that keeps everyone calm.</p>
+        </div>
+
+        <div class="grid testimonials">
+          <div class="card quote">
+            <p>
+              “They somehow captured our entire relationship in the menu — it was classy, funny, and genuinely emotional.
+              The pacing was perfect; our guests still talk about the ‘trip’ course.”
+            </p>
+            <div class="who">
+              <div class="avatar" aria-hidden="true"></div>
+              <div>
+                <strong>Couple testimonial</strong><br />
+                <span class="muted">Edinburgh • Summer wedding</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card stats">
+            <div class="stat">
+              <strong>Guest-first</strong>
+              <span>Dietary-led planning that feels seamless (not “separate”).</span>
+            </div>
+            <div class="stat">
+              <strong>Calm execution</strong>
+              <span>Clear run-sheets, polished service, no chaos.</span>
+            </div>
+            <div class="stat">
+              <strong>Your voice</strong>
+              <span>Menus that sound like you — not generic wedding copy.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-label="Frequently asked questions">
+      <div class="container">
+        <div class="section__head">
+          <h2>FAQ</h2>
+          <p class="muted">Quick answers. If you don’t see your question, pop it in the enquiry form.</p>
+        </div>
+
+        <details>
+          <summary>How far in advance should we book?</summary>
+          <p>As early as you can — peak dates go quickly. If your date is soon, still enquire; we’ll tell you straight away what’s possible.</p>
+        </details>
+
+        <details>
+          <summary>Do you handle dietary requirements?</summary>
+          <p>Yes — we plan menus with dietary-led thinking from the start, so every guest feels included without it becoming a “separate menu” vibe.</p>
+        </details>
+
+        <details>
+          <summary>Can we do cocktails or pairings?</summary>
+          <p>Optional add-on. If you want a bar moment (welcome drink, signature serves, pairing notes), we’ll build it to match your story and schedule.</p>
+        </details>
+
+        <details>
+          <summary>Where do you operate?</summary>
+          <p>Edinburgh and surrounding areas as standard, with wider Scotland available depending on the event scale and logistics.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" aria-label="Enquiry form">
+      <div class="container">
+        <div class="section__head">
+          <h2>Enquire</h2>
+          <p class="muted">Tell us a little about your day — we’ll come back with next steps, availability, and a guide price.</p>
+        </div>
+
+        <div class="grid contact">
+          <div class="card">
+            <div class="card__inner">
+              <span class="pill">Fast reply • Clear next steps</span>
+              <div class="divider"></div>
+
+              <!-- Replace action with your form endpoint (Squarespace form, Formspree, etc.) -->
+              <form action="#" method="post">
+                <div class="form-row">
+                  <div>
+                    <label for="name">Name</label>
+                    <input id="name" name="name" placeholder="Your name" autocomplete="name" required />
+                  </div>
+                  <div>
+                    <label for="email">Email</label>
+                    <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div>
+                    <label for="date">Event date</label>
+                    <input id="date" name="date" type="date" />
+                  </div>
+                  <div>
+                    <label for="guests">Estimated guests</label>
+                    <input id="guests" name="guests" type="number" min="2" placeholder="e.g. 80" />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div>
+                    <label for="type">Event type</label>
+                    <select id="type" name="type">
+                      <option>Wedding</option>
+                      <option>Private Dining</option>
+                      <option>Corporate</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="location">Location</label>
+                    <input id="location" name="location" placeholder="Venue / area" />
+                  </div>
+                </div>
+
+                <div>
+                  <label for="story">What’s the story?</label>
+                  <textarea id="story" name="story" placeholder="Tell us your vibe, favourite places/foods, and any key moments you’d love built into the menu."></textarea>
+                </div>
+
+                <button class="btn btn--primary" type="submit">Send enquiry</button>
+                <p class="note">By submitting, you agree we can contact you about your enquiry. No spam — ever.</p>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card__inner">
+              <h3 style="margin:0 0 10px; font-size: 16px;">What happens next</h3>
+              <p class="muted" style="margin:0 0 14px;">
+                We’ll confirm availability, ask a few smart questions, and share a guide price range based on guest count and service style.
+              </p>
+
+              <div class="panel-card">
+                <h3>Quick links</h3>
+                <ul>
+                  <li><a href="#how">How it works</a></li>
+                  <li><a href="#services">Services</a></li>
+                  <li><a href="#stories">Sample story moments</a></li>
+                </ul>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="panel-card">
+                <h3>Contact</h3>
+                <ul>
+                  <li>Email: <span class="muted">hello@feastandforever.co.uk</span></li>
+                  <li>Location: <span class="muted">Edinburgh, Scotland</span></li>
+                  <li>Instagram: <span class="muted">@feastandforever</span></li>
+                </ul>
+                <p class="note" style="margin:10px 0 0;">Replace these placeholders with your real contact details.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <div class="container">
+      <div class="footer__row">
+        <div>
+          <div class="brand" style="padding:0">
+            <div class="mark" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M9.2 16.6c-1.5 1.5-4 1.5-5.5 0s-1.5-4 0-5.5 4-1.5 5.5 0l6.1 6.1c1.5 1.5 4 1.5 5.5 0s1.5-4 0-5.5-4-1.5-5.5 0L8.2 17.8"
+                      stroke="rgba(214,181,109,.95)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="brand__name">
+              <strong>Feast &amp; Forever</strong>
+              <span>Where Memories Become Menus</span>
+            </div>
+          </div>
+          <p class="note" style="margin:12px 0 0;">© <span id="year"></span> Feast &amp; Forever. All rights reserved.</p>
+        </div>
+
+        <div class="small-links" aria-label="Footer links">
+          <a href="#services">Services</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Enquire</a>
+          <a href="#top">Back to top</a>
+        </div>
+      </div>
     </div>
   </footer>
 
-</div>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
+  <script>
+    // Tiny enhancement: keep footer year current.
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
