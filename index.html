@@ -41,18 +41,27 @@
 
     /* Reset-ish */
     *{ box-sizing:border-box; }
-    html,body{ height:100%; }
+   html, body{
+    height: 100%;
+   }
     body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background:
-        radial-gradient(900px 420px at 16% -10%, rgba(214,181,109,.18), transparent 55%),
-        radial-gradient(800px 460px at 90% 10%, rgba(124,224,177,.12), transparent 60%),
-        linear-gradient(180deg, var(--bg) 0%, #041411 60%, #03110E 100%);
-      line-height:1.45;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    margin:0;
+    min-height: 100vh;              /* ensures it always covers the viewport */
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    color: var(--text);
+  
+    background:
+      radial-gradient(900px 420px at 16% -10%, rgba(214,181,109,.18), transparent 55%),
+      radial-gradient(800px 460px at 90% 10%, rgba(124,224,177,.12), transparent 60%),
+      linear-gradient(180deg, var(--bg) 0%, #041411 60%, #03110E 100%);
+  
+    background-repeat: no-repeat;   /* stops any tiling */
+    background-attachment: fixed;   /* stops “restart” seams on scroll */
+    background-color: #03110E;      /* safety net if anything ever shows through */
+  
+    line-height:1.45;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     }
 
     a{ color:inherit; text-decoration:none; }
