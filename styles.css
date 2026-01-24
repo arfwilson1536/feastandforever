@@ -645,6 +645,27 @@
       font-size: 12.5px;
       color: rgba(242,245,243,.68);
     }
+    
+    /* ===============================
+       Custom select arrow
+       =============================== */
+    
+    .select-wrap{
+      position: relative;
+    }
+    
+    .select-wrap::after{
+      content: "";
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid rgba(242,245,243,.75);
+      border-bottom: 2px solid rgba(242,245,243,.75);
+      transform: translateY(-50%) rotate(45deg);
+      pointer-events: none;
+    }
 
     /* Footer */
     footer{
