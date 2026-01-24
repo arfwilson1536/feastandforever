@@ -658,6 +658,10 @@
       .testimonials{ grid-template-columns: 1fr; }
       .contact{ grid-template-columns: 1fr; }
       .nav__links{ display:none; } /* keep it clean on mobile; you can add a burger later */
+      .nav__cta .btn:not(.btn--primary){ display: none; } /* Keep only one CTA button so it doesn't crush */
+      .brand{ min-width: 0; } /* Let the brand shrink nicely */
+      .brand__name strong{ font-size: 14px; }
+      .brand__name span{ display: none; } /* hide tagline line on mobile */
     }
     @media (max-width: 520px){
       .kpi{ grid-template-columns: 1fr; }
@@ -668,25 +672,6 @@
     /* Reduce motion for accessibility */
     @media (prefers-reduced-motion: reduce){
       *{ scroll-behavior:auto !important; transition:none !important; }
-    }
-
-    /* Desktop default = as-is */
-    
-    @media (max-width: 980px){
-      .nav__row{
-        gap: 10px;
-      }
-    
-      /* Hide the full link row on mobile (you already do this) */
-      .nav__links{ display: none; }
-    
-      /* Keep only one CTA button so it doesn't crush */
-      .nav__cta .btn:not(.btn--primary){ display: none; }
-    
-      /* Let the brand shrink nicely */
-      .brand{ min-width: 0; }
-      .brand__name strong{ font-size: 14px; }
-      .brand__name span{ display: none; } /* hide tagline line on mobile */
     }
     
     /* Extra-small phones */
