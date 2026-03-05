@@ -171,7 +171,7 @@ p{ color: rgba(244,246,244,.84); }
 .panel-card{
   border-radius: 18px;
   border: 1px solid rgba(214,181,109,.22);
-  background: rgba(0,0,0,.12);
+  background: rgba(35,48,32,.65);
   padding: 16px;
 }
 .panel-card h3{
@@ -196,7 +196,7 @@ p{ color: rgba(244,246,244,.84); }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(0,0,0,.12);
+  background: rgba(35,48,32,.65);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,.10);
@@ -344,7 +344,7 @@ p{ color: rgba(244,246,244,.84); }
 .kpi .box{
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,.16);
-  background: rgba(0,0,0,.12);
+  background: rgba(35,48,32,.65);
   padding: 14px;
 }
 .kpi .box strong{
@@ -701,7 +701,7 @@ textarea{ min-height: 120px; resize: vertical; }
 footer{
   padding: 26px 0 36px;
   border-top: 1px solid rgba(255,255,255,.10);
-  background: rgba(0,0,0,.12);
+  background: rgba(35,48,32,.65);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
