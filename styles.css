@@ -733,13 +733,3 @@ footer{
   .btn{ padding: 10px 12px; font-size: 13px; }
   .mark{ width: 44px; height: 44px; }
 }
-/* Premium glass overrides (paste at very end of styles.css) */
-.card,
-.feature,
-details,
-.trust__row{
-  background: rgba(255,255,255,.32);
-  border: 1px solid rgba(255,255,255,.30);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
