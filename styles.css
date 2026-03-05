@@ -1,26 +1,22 @@
 :root{
   /* Brand */
-  --brand: #4D6148;                 /* primary forest */
-  --brand-ink: #2F3D2C;             /* deeper for headings */
-  --brand-soft: rgba(77, 97, 72, .12);
-
-  /* Light system */
-  --bg: #F6F7F5;                    /* page background */
-  --bg-2: #EEF2EE;                  /* subtle alt */
-  --surface: rgba(255,255,255,.78); /* glassy */
-  --surface-2: rgba(255,255,255,.92);
-  --text: #0F1713;                  /* near-black */
-  --muted: rgba(15,23,19,.68);
-  --line: rgba(15,23,19,.10);
-
-  /* Accents */
+  --brand: #4D6148;         /* your primary */
+  --brand-deep: #2E3B2A;    /* heading ink */
   --gold: #D6B56D;
   --gold-2:#B9903D;
-  --success:#2F9D6A;
 
-  /* Shadows (light mode) */
-  --shadow: 0 18px 50px rgba(15,23,19,.12);
-  --shadow-soft: 0 12px 30px rgba(15,23,19,.10);
+  /* Light UI (but green-led) */
+  --text: #0F1713;
+  --muted: rgba(15,23,19,.68);
+  --line: rgba(15,23,19,.12);
+
+  /* Surfaces */
+  --surface: rgba(255,255,255,.72);
+  --surface-2: rgba(255,255,255,.88);
+
+  /* Shadows */
+  --shadow: 0 18px 50px rgba(15,23,19,.14);
+  --shadow-soft: 0 12px 30px rgba(15,23,19,.12);
 
   /* Radii */
   --radius-lg: 22px;
@@ -31,12 +27,9 @@
   --max: 1120px;
   --pad: clamp(18px, 3.2vw, 34px);
 
-  /* Typography */
-  --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  --font-serif: Fraunces, ui-serif, Georgia, "Times New Roman", Times, serif;
-
-  /* Controls */
-  --focus: rgba(77,97,72,.42);
+  /* Premium fonts */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  --font-serif: "Fraunces", ui-serif, Georgia, "Times New Roman", Times, serif;
 }
 
 /* Reset-ish */
@@ -47,19 +40,24 @@ body{
   min-height: 100vh;
   font-family: var(--font-sans);
   color: var(--text);
-  line-height: 1.5;
+  line-height:1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Light, premium background with quiet brand presence */
+  /* This is the key: strong green field with light “mist” over it */
   background:
-    radial-gradient(900px 520px at 12% -10%, rgba(214,181,109,.18), transparent 60%),
-    radial-gradient(900px 520px at 90% 0%, rgba(77,97,72,.16), transparent 58%),
-    radial-gradient(700px 420px at 50% 115%, rgba(77,97,72,.10), transparent 55%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 60%, #E9EEE8 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: var(--bg);
+    radial-gradient(1100px 680px at 15% -10%, rgba(255,255,255,.55), transparent 62%),
+    radial-gradient(900px 520px at 88% 0%, rgba(214,181,109,.18), transparent 60%),
+    radial-gradient(900px 640px at 50% 120%, rgba(255,255,255,.40), transparent 58%),
+    linear-gradient(180deg,
+      #5E7557 0%,      /* lighter green top */
+      #4D6148 48%,     /* your primary dominates */
+      #2F3D2C 100%     /* deepens at bottom */
+    );
+
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-color:#4D6148;
 }
 
 a{ color: inherit; text-decoration: none; }
@@ -72,8 +70,24 @@ h1, h2, h3, h4{
   color: var(--brand-ink);
   letter-spacing: -0.2px;
 }
-h1{ font-family: var(--font-serif); letter-spacing: -0.8px; }
-h2{ font-family: var(--font-serif); }
+h1, h2{
+  font-family: var(--font-serif);
+  color: #243022;                 /* richer than pure green */
+  letter-spacing: -0.8px;
+}
+h1{
+  font-weight: 700;
+  line-height: 1.02;
+}
+h2{
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: -0.4px;
+}
+h3, h4{
+  font-family: var(--font-sans);
+  color: rgba(15,23,19,.92);
+}
 p{ margin: 0; color: rgba(15,23,19,.82); }
 
 ::selection{
@@ -105,26 +119,16 @@ p{ margin: 0; color: rgba(15,23,19,.82); }
 }
 
 /* Buttons */
+/* Make buttons feel premium on light glass */
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(15,23,19,.14);
-  background: rgba(255,255,255,.70);
-  color: var(--text);
-  box-shadow: 0 0 0 rgba(0,0,0,0);
-  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
-  cursor:pointer;
-  white-space: nowrap;
+  border: 1px solid rgba(255,255,255,.32);
+  background: rgba(255,255,255,.30);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .btn:hover{
-  transform: translateY(-1px);
-  background: rgba(255,255,255,.92);
-  border-color: rgba(77,97,72,.35);
-  box-shadow: 0 10px 26px rgba(15,23,19,.10);
+  background: rgba(255,255,255,.40);
+  border-color: rgba(255,255,255,.48);
 }
 .btn:active{ transform: translateY(0px); }
 
@@ -728,4 +732,14 @@ footer{
 @media (max-width: 420px){
   .btn{ padding: 10px 12px; font-size: 13px; }
   .mark{ width: 44px; height: 44px; }
+}
+/* Premium glass overrides (paste at very end of styles.css) */
+.card,
+.feature,
+details,
+.trust__row{
+  background: rgba(255,255,255,.32);
+  border: 1px solid rgba(255,255,255,.30);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
