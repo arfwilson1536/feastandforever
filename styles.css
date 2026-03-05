@@ -40,8 +40,7 @@
   linear-gradient(
     180deg,
     #4D6148 0%,
-    #4D6148 75%,
-    #FFFFFF 100%
+    #4D6148 100%
   );
   
     background-repeat: no-repeat;   /* stops any tiling */
