@@ -37,7 +37,7 @@
     background:
       radial-gradient(900px 420px at 16% -10%, rgba(214,181,109,.18), transparent 55%),
       radial-gradient(800px 460px at 90% 10%, rgba(124,224,177,.12), transparent 60%),
-      linear-gradient(180deg, var(--bg) 0%, #041411 60%, #03110E 100%);
+      linear-gradient(180deg, var(--bg) 0%, #4D6148 70%, #03110E 100%);
   
     background-repeat: no-repeat;   /* stops any tiling */
     background-attachment: fixed;   /* stops “restart” seams on scroll */
