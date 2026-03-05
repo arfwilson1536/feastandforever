@@ -196,9 +196,9 @@ p{ color: rgba(244,246,244,.84); }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(77,97,72,.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(0,0,0,.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,.10);
 }
 .nav__row{
