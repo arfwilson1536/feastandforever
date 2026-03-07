@@ -2,7 +2,7 @@
   /* Brand */
   --brand: #4D6148;
   --brand-2: #3F533B;            /* darker hover */
-  --gold: #D6B56D;
+  --gold: #DABD7E;
 
   /* Solid page background (no gradients) */
   --bg: #4D6148;
@@ -236,7 +236,7 @@ p{ color: rgba(244,246,244,.84); }
 .brand__name strong{
   font-family: var(--font-serif);
   font-weight: 700;
-  color: #D6B56D;
+  color: #DABD7E;
   letter-spacing: -0.2px;
 }
 .brand__name span{
