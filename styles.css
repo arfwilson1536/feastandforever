@@ -1,11 +1,11 @@
 :root{
   /* Brand */
-  --brand: #E4E9E2;
+  --brand: #4D6148;
   --brand-2: #3F533B;            /* darker hover */
   --gold: #D6B56D;
 
   /* Solid page background (no gradients) */
-  --bg: #4D6148;
+  --bg: #E4E9E2;
 
   /* Surfaces */
   --surface: rgba(35,48,32,.65);   /* floating layer */
